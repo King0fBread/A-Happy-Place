@@ -27,7 +27,7 @@ public class PlayerMovement : MonoBehaviour
         _thisRb = GetComponent<Rigidbody>();
         _playerInputActions = new PlayerInputActions();
         _playerInputActions.PlayerMovement.Enable();
-        Cursor.lockState = CursorLockMode.Locked;
+        //Cursor.lockState = CursorLockMode.Locked;
     }
     private void Update()
     {
