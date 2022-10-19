@@ -4,12 +4,18 @@ using UnityEngine;
 
 public class ConversationActivator : MonoBehaviour
 {
-    private void Start()
+    [SerializeField] private string _conversationNameToActivate;
+    private void OnTriggerEnter(Collider other)
     {
-        PhoneMessagesLogic.instance.FindConversation("First");
+        if (other.CompareTag("Player"))
+        {
+            ActivateConversationByName(_conversationNameToActivate);
+            Destroy(gameObject);
+        }
     }
-    public void ActivateConversationByName(string name)
+    private void ActivateConversationByName(string name)
     {
+        PhoneMessagesLogic.instance.TryClearConversation();
         PhoneMessagesLogic.instance.FindConversation(name);
     }
 }

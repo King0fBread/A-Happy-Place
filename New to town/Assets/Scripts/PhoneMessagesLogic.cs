@@ -4,9 +4,12 @@ using UnityEngine;
 
 public class PhoneMessagesLogic: MonoBehaviour
 {
-    [SerializeField] private MessagesButton _replyButton;
-    private Conversation _currentConversation;
+    [Header("UI objects to toggle")]
+    [SerializeField] private GameObject _unreadMessagesIcon;
+    [SerializeField] private GameObject _chatroomObject;
+    [Header("Messages Logic")]
     [SerializeField] private int _currentReplyIndex = 0;
+    private Conversation _currentConversation;
     public static PhoneMessagesLogic instance { get; private set; }
     private void Awake()
     {
@@ -28,6 +31,9 @@ public class PhoneMessagesLogic: MonoBehaviour
         {
             if(conversationName == convo.conversationName)
             {
+                _chatroomObject.SetActive(false);
+                _unreadMessagesIcon.SetActive(true);
+
                 _currentConversation = convo;
                 CheckConversationStartingStatus();
                 break;
@@ -62,13 +68,16 @@ public class PhoneMessagesLogic: MonoBehaviour
         _currentConversation.isPlayersTurnToReply = true;
         _currentReplyIndex++;
     }
-    public void ClearAllConversations(GameObject[] conversationsArray)
+    public void TryClearConversation()
     {
-        _currentConversation = null;
-        _currentReplyIndex = 0;
-        foreach(GameObject reply in conversationsArray)
+        if(_currentConversation != null && _currentReplyIndex >= _currentConversation.maxReplyIndex)
         {
-            reply.SetActive(false);
+            foreach(GameObject reply in _currentConversation.conversationRepliesInOrder)
+            {
+                reply.SetActive(false);
+            }
+            _currentConversation = null;
+            _currentReplyIndex = 0;
         }
     }
 }
