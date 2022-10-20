@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,26 +7,37 @@ using UnityEngine.UI;
 public class PhoneToggleButton : MonoBehaviour
 {
     [SerializeField] private GameObject _phoneObject;
-    private Image _buttonImage;
+    [SerializeField] private EventsManager _eventsManager;
+    private Image thisImage;
     private bool _isActive = false;
+    private bool _canUsePhone = false;
     private Color _fullyVisibleButton = new Color(1f, 1f, 1f, 1f);
-    private Color _inactiveButton = new Color(1f, 1f, 1f, 0.4f);
+    private Color _inactiveButton = new Color(1f, 1f, 1f, 0.3f);
     private void Awake()
     {
-        _buttonImage = GetComponent<Image>();
+        thisImage = GetComponent<Image>();
+        _eventsManager.OnEKeyPressed += ToggleAlphaAndPhone;
+        gameObject.SetActive(false);
     }
-    public void ToggleAlphaAndPhone()
+    private void OnEnable()
     {
-        _isActive = !_isActive;
-        if (_isActive)
+        _canUsePhone = true;
+    }
+    public void ToggleAlphaAndPhone(object sender, EventArgs args)
+    {
+        if (_canUsePhone)
         {
-            _phoneObject.SetActive(true);
-            _buttonImage.color = _inactiveButton;
-        }
-        else if (!_isActive)
-        {
-            _phoneObject.SetActive(false);
-            _buttonImage.color = _fullyVisibleButton;
+            _isActive = !_isActive;
+            if (_isActive)
+            {
+                _phoneObject.SetActive(true);
+                thisImage.color = _inactiveButton;
+            }
+            else if (!_isActive)
+            {
+                _phoneObject.SetActive(false);
+                thisImage.color = _fullyVisibleButton;
+            }
         }
     }
 }

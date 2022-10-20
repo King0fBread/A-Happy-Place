@@ -7,7 +7,7 @@ public class FlashlightLogic : MonoBehaviour
 {
     [SerializeField] private EventsManager _eventsManager;
     [SerializeField] private GameObject _lightSource;
-    private bool _flashlightPickedUp = false;
+    private bool _flashLightCanBeUsed = false;
     private bool _flashlightCurrentState = false;
 
     private void Awake()
@@ -16,14 +16,14 @@ public class FlashlightLogic : MonoBehaviour
     }
     private void UseFlashlight(object sender, EventArgs args)
     {
-        if (_flashlightPickedUp)
+        if (_flashLightCanBeUsed)
         {
             _lightSource.SetActive(!_flashlightCurrentState);
             _flashlightCurrentState = !_flashlightCurrentState;
         }
     }
-    public void AllowFlashlightUse()
+    public void AllowFlashlightUse(bool value)
     {
-        _flashlightPickedUp = true;
+        _flashLightCanBeUsed = value;
     }
 }

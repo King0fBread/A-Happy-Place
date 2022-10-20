@@ -7,7 +7,7 @@ public class FlashlightObject : MonoBehaviour
     [SerializeField] private FlashlightLogic _flashlightLogic;
     private void OnMouseDown()
     {
-        _flashlightLogic.AllowFlashlightUse();
+        _flashlightLogic.AllowFlashlightUse(true);
         gameObject.SetActive(false);
     }
 }
