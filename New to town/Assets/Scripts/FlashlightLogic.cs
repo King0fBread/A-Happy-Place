@@ -26,4 +26,12 @@ public class FlashlightLogic : MonoBehaviour
     {
         _flashLightCanBeUsed = value;
     }
+    public void ForceTurnOffFlashlight()
+    {
+        if (_flashlightCurrentState==true)
+        {
+            _lightSource.SetActive(false);
+            _flashlightCurrentState = false;
+        }
+    }
 }

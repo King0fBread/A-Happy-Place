@@ -15,4 +15,8 @@ public class ToggleItemsUse : MonoBehaviour
     {
         _phoneToggleButton.gameObject.SetActive(state);
     }
+    public void ManuallyTurnOffFlashlight()
+    {
+        _flashlightLogic.ForceTurnOffFlashlight();
+    }
 }
