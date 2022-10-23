@@ -5,11 +5,11 @@ using UnityEngine;
 public class PlayerRoomDoorBlocker : MonoBehaviour
 {
     [SerializeField] private ToggleItemsUse _itemsToggle;
-    private bool _hasPlayerTriedToLeave = false;
-    private void OnEnable()
-    {
-        _hasPlayerTriedToLeave = false;
-    }
+    [SerializeField] private Transform _outsideDoorPoint;
+    [SerializeField] private Transform _insideDoorPoint;
+    [SerializeField] private GameObject _playerObject;
+    private bool _canLeaveRoom = true;
+    private bool _isPlayerInside = true;
     private void OnMouseEnter()
     {
         _itemsToggle.CanUseFlashlight(false);
@@ -20,11 +20,28 @@ public class PlayerRoomDoorBlocker : MonoBehaviour
     }
     private void OnMouseDown()
     {
-        if (!_hasPlayerTriedToLeave)
+        if (!_canLeaveRoom)
         {
-            _hasPlayerTriedToLeave = true;
             print("cant go");
             //sound of not wanting to leave
         }
+        else if (_canLeaveRoom)
+        {
+            if (_isPlayerInside)
+            {
+                ChangePosition(_outsideDoorPoint);
+        
+            }
+            else if (!_isPlayerInside)
+            {
+                ChangePosition(_insideDoorPoint);
+            }
+        }
+    }
+    private void ChangePosition(Transform newTransform)
+    {
+        _isPlayerInside = !_isPlayerInside;
+        _playerObject.transform.position = newTransform.position;
+        _playerObject.transform.rotation = newTransform.rotation;
     }
 }

@@ -40,4 +40,8 @@ public class PhoneToggleButton : MonoBehaviour
             }
         }
     }
+    public bool IsPhoneActive()
+    {
+        return _canUsePhone;
+    }
 }
