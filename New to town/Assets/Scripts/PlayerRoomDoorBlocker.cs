@@ -12,11 +12,11 @@ public class PlayerRoomDoorBlocker : MonoBehaviour
     private bool _isPlayerInside = true;
     private void OnMouseEnter()
     {
-        _itemsToggle.CanUseFlashlight(false);
+        _itemsToggle.ToggleFlashlightPermission(false);
     }
     private void OnMouseExit()
     {
-        _itemsToggle.CanUseFlashlight(true);
+        _itemsToggle.ToggleFlashlightPermission(true);
     }
     private void OnMouseDown()
     {

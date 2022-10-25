@@ -9,9 +9,13 @@ public class ToggleItemsUse : MonoBehaviour
     [SerializeField] private PhoneToggleButton _phoneToggleButton;
 
     private bool _canPhoneBeUsed;
-    public void CanUseFlashlight(bool state)
+    public void ToggleFlashlightState(bool value)
     {
-        _flashlightLogic.AllowFlashlightUse(state);
+        _flashlightLogic.TryForceToogleFlashlight(value);
+    }
+    public void ToggleFlashlightPermission(bool value)
+    {
+        _flashlightLogic.ToggleFlashlightPermisson(value);
     }
     public void ManuallyDisablePhone()
     {
@@ -21,9 +25,5 @@ public class ToggleItemsUse : MonoBehaviour
     public void TryManuallyEnablePhone()
     {
         if (_canPhoneBeUsed) _phoneToggleButton.gameObject.SetActive(true);
-    }
-    public void ManuallyTurnOffFlashlight()
-    {
-        _flashlightLogic.ForceTurnOffFlashlight();
     }
 }

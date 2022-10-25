@@ -10,15 +10,15 @@ public class PlayerRoomPeephole : MonoBehaviour
     {
         _peepCamera.SetActive(true);
 
-        _itemsToggle.ManuallyTurnOffFlashlight();
-        _itemsToggle.CanUseFlashlight(false);
+        _itemsToggle.ToggleFlashlightState(false);
+        _itemsToggle.ToggleFlashlightPermission(false);
         _itemsToggle.ManuallyDisablePhone();
     }
     private void OnMouseUp()
     {
         _peepCamera.SetActive(false);
 
-        _itemsToggle.CanUseFlashlight(true);
+        _itemsToggle.ToggleFlashlightPermission(true);
         _itemsToggle.TryManuallyEnablePhone();
     }
 }

@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
-
 public class PlayerMovement : MonoBehaviour
 {
     [Header("Movement")]
@@ -39,7 +38,7 @@ public class PlayerMovement : MonoBehaviour
     {
         _inputMovementVector = _playerInputActions.PlayerMovement.Movement.ReadValue<Vector2>();
         _moveDirection = _orientationObjTransform.forward * _inputMovementVector.y + _orientationObjTransform.right * _inputMovementVector.x;
-        _thisRb.AddForce(_moveDirection.normalized * _playerSpeed, ForceMode.Force);
+        _thisRb.AddForce(_moveDirection.normalized * _playerSpeed * Time.deltaTime, ForceMode.Force);
     }
     private void RotatePlayer()
     {
@@ -47,7 +46,7 @@ public class PlayerMovement : MonoBehaviour
         float mouseRotationY = Input.GetAxisRaw("Mouse Y") * Time.deltaTime * _rotationSetsitivityY;
         _rotationX -= mouseRotationY;
         _rotationY += mouseRotationX;
-        _rotationX = Mathf.Clamp(_rotationX, -90f, 90f);
+        _rotationX = Mathf.Clamp(_rotationX, -75f, 65f);
         _orientationObjTransform.rotation = Quaternion.Euler(0f, _rotationY,0f);
         _cameraTransform.rotation = Quaternion.Euler(_rotationX, _rotationY, 0f);
     }
