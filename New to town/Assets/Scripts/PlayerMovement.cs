@@ -21,6 +21,7 @@ public class PlayerMovement : MonoBehaviour
     private float _rotationY;
     [Header("References")]
     [SerializeField] private ControllCinemachineShake _controllCinemachineShake;
+    [SerializeField] private StaminaLogic _staminaLogic;
     private void Awake()
     {
         _thisRb = GetComponent<Rigidbody>();
@@ -54,7 +55,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (_inputMovementVector != Vector2.zero)
         {
-            if (Input.GetKey(KeyCode.LeftShift)) SetSpeedToRunning();
+            if (Input.GetKey(KeyCode.LeftShift) && _staminaLogic.DoesPlayerHaveStanima()) SetSpeedToRunning();
             else SetSpeedToWalking();
         }
         else

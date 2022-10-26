@@ -10,7 +10,6 @@ public class StaminaLogic : MonoBehaviour
     [SerializeField] private float _increasingStaminaValue;
     [SerializeField] private float _maxStaminaValue;
     private float _currentStamina;
-    private float _currentStaminaValue;
     private bool _canUseStamina = true;
     private void Awake()
     {
@@ -38,5 +37,9 @@ public class StaminaLogic : MonoBehaviour
         {
             _currentStamina += _decreasingStaminaValue * Time.deltaTime;
         }
+    }
+    public bool DoesPlayerHaveStanima()
+    {
+        return _currentStamina > 0;
     }
 }
