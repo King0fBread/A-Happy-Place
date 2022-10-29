@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class FlashlightLogic : MonoBehaviour
 {
-    [SerializeField] private EventsManager _eventsManager;
+    [SerializeField] private MovementEventsManager _eventsManager;
     [SerializeField] private GameObject _lightSource;
     [SerializeField] private bool _flashlightCanBeUsed = false;
     private bool _flashlightCurrentState = false;

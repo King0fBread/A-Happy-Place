@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class PhoneToggleButton : MonoBehaviour
 {
     [SerializeField] private GameObject _phoneObject;
-    [SerializeField] private EventsManager _eventsManager;
+    [SerializeField] private MovementEventsManager _eventsManager;
     private Image thisImage;
     private bool _isActive = false;
     private bool _canUsePhone = false;
