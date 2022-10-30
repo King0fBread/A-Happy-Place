@@ -12,6 +12,7 @@ public class PlayerMovement : MonoBehaviour
     private PlayerInputActions _playerInputActions;
     private Vector2 _inputMovementVector;
     private Vector3 _moveDirection;
+    private bool _canMove = true;
     [Header("Rotation")]
     [SerializeField] private Transform _orientationObjTransform;
     [SerializeField] private Transform _cameraTransform;
@@ -31,9 +32,12 @@ public class PlayerMovement : MonoBehaviour
     }
     private void Update()
     {
-        MovePlayer();
-        RotatePlayer();
-        IsPlayerMoving();
+        if (_canMove)
+        {
+            MovePlayer();
+            RotatePlayer();
+            IsPlayerMoving();
+        }
     }
     private void MovePlayer()
     {
@@ -72,6 +76,12 @@ public class PlayerMovement : MonoBehaviour
     {
         _playerSpeed = _walkingSpeed;
         _controllCinemachineShake.StartShake(_controllCinemachineShake._walkingShakeIntensity);
+    }
+    public IEnumerator TempDisableMovement(int secondsOfDisabling)
+    {
+        _canMove = false;
+        yield return new WaitForSeconds(secondsOfDisabling);
+        _canMove = true;
     }
 
 }
