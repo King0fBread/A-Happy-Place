@@ -9,7 +9,7 @@ public class StaminaLogic : MonoBehaviour
     [SerializeField] private float _decreasingStaminaValue;
     [SerializeField] private float _increasingStaminaValue;
     [SerializeField] private float _maxStaminaValue;
-    private float _currentStamina;
+    private float _currentStamina = 1f;
     private bool _canUseStamina = true;
     private void Awake()
     {
