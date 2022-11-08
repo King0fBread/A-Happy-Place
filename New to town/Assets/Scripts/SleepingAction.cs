@@ -23,6 +23,7 @@ public class SleepingAction : MonoBehaviour
     {
         if (_canSleep)
         {
+            _blackScreenAnim.gameObject.SetActive(true);
             _blackScreenAnim.SetTrigger("Sleep");
             _playerObj.transform.position = _sleepTransform.position;
             _playerCameraObj.transform.rotation = _sleepTransform.rotation;

@@ -13,6 +13,7 @@ public class PlayerMovement : MonoBehaviour
     private Vector2 _inputMovementVector;
     private Vector3 _moveDirection;
     private bool _canMove = true;
+    private bool _canRotate = true;
     [Header("Rotation")]
     [SerializeField] private Transform _orientationObjTransform;
     [SerializeField] private Transform _cameraTransform;
@@ -34,8 +35,8 @@ public class PlayerMovement : MonoBehaviour
     {
         if (_canMove)
         {
+            if (_canRotate) RotatePlayer();
             MovePlayer();
-            RotatePlayer();
             IsPlayerMoving();
         }
     }
@@ -82,6 +83,10 @@ public class PlayerMovement : MonoBehaviour
         _canMove = false;
         yield return new WaitForSeconds(secondsOfDisabling);
         _canMove = true;
+    }
+    public void TogglePlayerRotaion(bool state)
+    {
+        _canRotate = state;
     }
 
 }
