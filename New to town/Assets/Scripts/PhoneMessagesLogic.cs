@@ -80,4 +80,8 @@ public class PhoneMessagesLogic: MonoBehaviour
             _currentReplyIndex = 0;
         }
     }
+    public bool ConversationIsFinished()
+    {
+        return _currentReplyIndex >= _currentConversation.maxReplyIndex;
+    }
 }
