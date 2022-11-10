@@ -8,14 +8,11 @@ public class SleepingLogic : MonoBehaviour
     [SerializeField] private GameObject _playerObj;
     [SerializeField] private GameObject _playerCameraObj;
     [SerializeField] private Transform _sleepTransform;
-    private GameplayOrderController _gameplayController;
     private PlayerMovement _playerMovement;
     private int _sleepSessionIndex = 0;
     private bool _canSleep = false;
     private void Awake()
     {
-        _gameplayController = GameObject.FindGameObjectWithTag("GameOrderManager").
-            GetComponent<GameplayOrderController>();
         _playerMovement = _playerObj.GetComponent<PlayerMovement>();
     }
     private void OnMouseDown()
@@ -40,15 +37,15 @@ public class SleepingLogic : MonoBehaviour
             Debug.Log("not sleepy yet");
         }
     }
-    private void CheckSleepSessionIndex()
-    {
-        if (_sleepSessionIndex == 1) _gameplayController.BeginFirstDay();
-        if (_sleepSessionIndex == 2) _gameplayController.BeginSecondDay();
-    }
-    public bool CheckIfCanSleep()
+    private bool CheckIfCanSleep()
     {
         _canSleep = PhoneMessagesLogic.instance.ConversationIsFinished();
         //potentially more checks
         return _canSleep;
+    }
+    private void CheckSleepSessionIndex()
+    {
+        if (_sleepSessionIndex == 1) PhoneMessagesLogic.instance.ActivateConversation("Second");
+        //if (_sleepSessionIndex == 2) PhoneMessagesLogic.instance.ActivateConversation("something");
     }
 }

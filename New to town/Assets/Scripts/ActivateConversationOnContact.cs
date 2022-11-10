@@ -9,8 +9,7 @@ public class ActivateConversationOnContact : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            PhoneMessagesLogic.instance.TryClearConversation();
-            PhoneMessagesLogic.instance.FindConversation(_conversationNameToActivate);
+            PhoneMessagesLogic.instance.ActivateConversation(_conversationNameToActivate);
             gameObject.SetActive(false);
         }
     }

@@ -24,7 +24,7 @@ public class PhoneMessagesLogic: MonoBehaviour
         public int maxReplyIndex;
     }
 
-    public void FindConversation(string conversationName)
+    private void FindConversation(string conversationName)
     {
         //finds and cashes the current conversation
         foreach(Conversation convo in _conversations)
@@ -48,6 +48,25 @@ public class PhoneMessagesLogic: MonoBehaviour
             StartCoroutine("SendReply");
         }
     }
+    private IEnumerator SendReply()
+    {
+        yield return new WaitForSeconds(Random.Range(4,8));
+        _currentConversation.conversationRepliesInOrder[_currentReplyIndex].SetActive(true);
+        _currentConversation.isPlayersTurnToReply = true;
+        _currentReplyIndex++;
+    }
+    private void TryClearConversation()
+    {
+        if(_currentConversation != null && _currentReplyIndex >= _currentConversation.maxReplyIndex)
+        {
+            foreach(GameObject reply in _currentConversation.conversationRepliesInOrder)
+            {
+                reply.SetActive(false);
+            }
+            _currentConversation = null;
+            _currentReplyIndex = 0;
+        }
+    }
     public void TrySendMessage()
     {
         //player used reply button
@@ -61,27 +80,13 @@ public class PhoneMessagesLogic: MonoBehaviour
             if (_currentReplyIndex <= _currentConversation.maxReplyIndex) StartCoroutine("SendReply");
         }
     }
-    private IEnumerator SendReply()
-    {
-        yield return new WaitForSeconds(Random.Range(4,8));
-        _currentConversation.conversationRepliesInOrder[_currentReplyIndex].SetActive(true);
-        _currentConversation.isPlayersTurnToReply = true;
-        _currentReplyIndex++;
-    }
-    public void TryClearConversation()
-    {
-        if(_currentConversation != null && _currentReplyIndex >= _currentConversation.maxReplyIndex)
-        {
-            foreach(GameObject reply in _currentConversation.conversationRepliesInOrder)
-            {
-                reply.SetActive(false);
-            }
-            _currentConversation = null;
-            _currentReplyIndex = 0;
-        }
-    }
     public bool ConversationIsFinished()
     {
         return _currentReplyIndex >= _currentConversation.maxReplyIndex;
+    }
+    public void ActivateConversation(string conversationName)
+    {
+        TryClearConversation();
+        FindConversation(conversationName);
     }
 }
