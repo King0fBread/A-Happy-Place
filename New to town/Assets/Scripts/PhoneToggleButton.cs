@@ -8,6 +8,7 @@ public class PhoneToggleButton : MonoBehaviour
 {
     [SerializeField] private GameObject _phoneObject;
     [SerializeField] private MovementEventsManager _eventsManager;
+    [SerializeField] private FlashlightLogic _flashlightLogic;
     [SerializeField] private GameObject _crossHair;
     [SerializeField] private PlayerMovement _playerMovement;
     private Image thisImage;
@@ -30,23 +31,25 @@ public class PhoneToggleButton : MonoBehaviour
         if (_canUsePhone)
         {
             _isActive = !_isActive;
-            //phone is opened
             if (_isActive)
             {
+                //phone is opened
                 _phoneObject.SetActive(true);
                 thisImage.color = _inactiveButton;
                 Cursor.lockState = CursorLockMode.None;
                 _playerMovement.TogglePlayerRotaion(false);
                 _crossHair.SetActive(false);
+                _flashlightLogic.AllowFlashlightUse(false);
             }
-            //phone is closed
             else if (!_isActive)
             {
+                //phone is closed
                 _phoneObject.SetActive(false);
                 thisImage.color = _fullyVisibleButton;
                 Cursor.lockState = CursorLockMode.Locked;
                 _playerMovement.TogglePlayerRotaion(true);
                 _crossHair.SetActive(true);
+                _flashlightLogic.AllowFlashlightUse(true);
             }
         }
     }

@@ -10,10 +10,10 @@ public class SleepingLogic : MonoBehaviour
     [SerializeField] private Transform _sleepTransform;
     private PlayerMovement _playerMovement;
     private int _sleepSessionIndex = 0;
-    private bool _canSleep = false;
     private void Awake()
     {
         _playerMovement = _playerObj.GetComponent<PlayerMovement>();
+        gameObject.SetActive(false);
     }
     private void OnMouseDown()
     {
@@ -21,27 +21,15 @@ public class SleepingLogic : MonoBehaviour
     }
     private void OnSleepInitiated()
     {
-        if (CheckIfCanSleep())
-        {
-            _sleepSessionIndex++;
-            CheckSleepSessionIndex();
+        _sleepSessionIndex++;
+        CheckSleepSessionIndex();
 
-            _blackScreenAnim.gameObject.SetActive(true);
-            _blackScreenAnim.SetTrigger("Sleep");
-            _playerObj.transform.position = _sleepTransform.position;
-            _playerCameraObj.transform.rotation = _sleepTransform.rotation;
-            _playerMovement.StartCoroutine("TempDisableMovement", 4);
-        }
-        else
-        {
-            Debug.Log("not sleepy yet");
-        }
-    }
-    private bool CheckIfCanSleep()
-    {
-        _canSleep = PhoneMessagesLogic.instance.ConversationIsFinished();
-        //potentially more checks
-        return _canSleep;
+        _blackScreenAnim.gameObject.SetActive(true);
+        _blackScreenAnim.SetTrigger("Sleep");
+        _playerObj.transform.position = _sleepTransform.position;
+        _playerCameraObj.transform.rotation = _sleepTransform.rotation;
+        _playerMovement.StartCoroutine("TempDisableMovement", 4);
+        gameObject.SetActive(false);
     }
     private void CheckSleepSessionIndex()
     {

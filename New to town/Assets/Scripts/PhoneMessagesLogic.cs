@@ -22,6 +22,7 @@ public class PhoneMessagesLogic: MonoBehaviour
         public bool isPlayersTurnToReply;
         public GameObject[] conversationRepliesInOrder;
         public int maxReplyIndex;
+        public GameObject storylineScriptToTrigger = null;
     }
 
     private void FindConversation(string conversationName)
@@ -54,6 +55,10 @@ public class PhoneMessagesLogic: MonoBehaviour
         _currentConversation.conversationRepliesInOrder[_currentReplyIndex].SetActive(true);
         _currentConversation.isPlayersTurnToReply = true;
         _currentReplyIndex++;
+
+        //checking if the convo is over from bot's side, if true - enabling a script object
+        if (ConversationIsFinished() && _currentConversation.storylineScriptToTrigger != null)
+            _currentConversation.storylineScriptToTrigger.SetActive(true);
     }
     private void TryClearConversation()
     {
@@ -78,6 +83,12 @@ public class PhoneMessagesLogic: MonoBehaviour
             _currentReplyIndex++;
             _currentConversation.isPlayersTurnToReply = false;
             if (_currentReplyIndex <= _currentConversation.maxReplyIndex) StartCoroutine("SendReply");
+            else
+            {
+                //checking if the convo is over from the player's side, if true - enabling a script object
+                if (ConversationIsFinished() && _currentConversation.storylineScriptToTrigger!=null) 
+                    _currentConversation.storylineScriptToTrigger.SetActive(true);
+            }
         }
     }
     public bool ConversationIsFinished()
