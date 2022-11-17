@@ -25,7 +25,7 @@ public class SleepingLogic : MonoBehaviour
         CheckSleepSessionIndex();
 
         _blackScreenAnim.gameObject.SetActive(true);
-        _blackScreenAnim.SetTrigger("Sleep");
+        _blackScreenAnim.SetTrigger("BlackScreen");
         _playerObj.transform.position = _sleepTransform.position;
         _playerCameraObj.transform.rotation = _sleepTransform.rotation;
         _playerMovement.StartCoroutine("TempDisableMovement", 4);
