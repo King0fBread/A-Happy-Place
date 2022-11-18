@@ -21,8 +21,8 @@ public class PhoneMessagesLogic: MonoBehaviour
         public string conversationName;
         public bool isPlayersTurnToReply;
         public GameObject[] conversationRepliesInOrder;
-        public int maxReplyIndex;
         public GameObject storylineScriptToTrigger = null;
+        [HideInInspector] public int maxReplyIndex;
     }
 
     private void FindConversation(string conversationName)
@@ -36,6 +36,7 @@ public class PhoneMessagesLogic: MonoBehaviour
                 _unreadMessagesIcon.SetActive(true);
 
                 _currentConversation = convo;
+                _currentConversation.maxReplyIndex = _currentConversation.conversationRepliesInOrder.Length - 1;
                 CheckConversationStartingStatus();
                 break;
             }
