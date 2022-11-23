@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class UnblockDoorOnEnable : MonoBehaviour
 {
-    [SerializeField] private RoomDoorBlocker _doorToUnlock;
+    [SerializeField] private RoomDoorBlocker _doorToToggle;
     [SerializeField] private bool _state;
     private void OnEnable()
     {
-        _doorToUnlock.CanPlayerLeaveRoom(_state);
+        _doorToToggle.CanPlayerLeaveRoom(_state);
     }
 }

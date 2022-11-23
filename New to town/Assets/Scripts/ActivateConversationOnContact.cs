@@ -12,8 +12,8 @@ public class ActivateConversationOnContact : MonoBehaviour
         {
             if (_convoIndex <= _conversationNamesToActivate.Length - 1)
             {
-            PhoneMessagesLogic.instance.ActivateConversation(_conversationNamesToActivate[_convoIndex]);
-            _convoIndex++;
+                PhoneMessagesLogic.instance.ActivateConversation(_conversationNamesToActivate[_convoIndex]);
+                _convoIndex++;
             }
             gameObject.SetActive(false);
         }
