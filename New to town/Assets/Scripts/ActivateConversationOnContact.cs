@@ -4,12 +4,17 @@ using UnityEngine;
 
 public class ActivateConversationOnContact : MonoBehaviour
 {
-    [SerializeField] private string _conversationNameToActivate;
+    [SerializeField] private string[] _conversationNamesToActivate;
+    private int _convoIndex=0;
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
-            PhoneMessagesLogic.instance.ActivateConversation(_conversationNameToActivate);
+            if (_convoIndex <= _conversationNamesToActivate.Length - 1)
+            {
+            PhoneMessagesLogic.instance.ActivateConversation(_conversationNamesToActivate[_convoIndex]);
+            _convoIndex++;
+            }
             gameObject.SetActive(false);
         }
     }

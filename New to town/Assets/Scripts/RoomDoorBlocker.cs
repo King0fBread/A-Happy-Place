@@ -23,7 +23,6 @@ public class RoomDoorBlocker : MonoBehaviour
         if (!_canLeaveRoom)
         {
             print("cant go");
-            //sound of not wanting to leave
         }
         else if (_canLeaveRoom)
         {
