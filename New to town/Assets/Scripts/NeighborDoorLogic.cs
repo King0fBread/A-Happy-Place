@@ -16,12 +16,12 @@ public class NeighborDoorLogic : MonoBehaviour
 
             if (_playerCameToTheDoorFirstTime)
             {
-            //first opening sound
-            _neighborDoorBlocker.CanPlayerLeaveRoom(true);
+                //first opening sound
+                _neighborDoorBlocker.CanPlayerLeaveRoom(true);
             }
             else
             {
-
+                //closing sound when player runs away
             }
             gameObject.SetActive(false);
         }

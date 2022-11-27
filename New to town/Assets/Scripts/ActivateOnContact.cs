@@ -4,12 +4,15 @@ using UnityEngine;
 
 public class ActivateOnContact : MonoBehaviour
 {
-    [SerializeField] private GameObject _objectToActivate;
+    [SerializeField] private GameObject[] _objectsToActivate;
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
-            _objectToActivate.SetActive(true);
+            foreach(GameObject obj in _objectsToActivate)
+            {
+                obj.SetActive(true);
+            }
         }
     }
 }
