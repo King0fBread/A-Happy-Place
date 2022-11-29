@@ -19,7 +19,7 @@ MonoBehaviour:
     width: 1536
     height: 780.8
   m_ShowMode: 4
-  m_Title: Hierarchy
+  m_Title: Scene
   m_RootView: {fileID: 2}
   m_MinSize: {x: 875, y: 300}
   m_MaxSize: {x: 10000, y: 10000}
@@ -121,7 +121,7 @@ MonoBehaviour:
   m_MinSize: {x: 500, y: 200}
   m_MaxSize: {x: 40480, y: 16192}
   vertical: 0
-  controlID: 4819
+  controlID: 27
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -146,7 +146,7 @@ MonoBehaviour:
   m_MinSize: {x: 100, y: 200}
   m_MaxSize: {x: 8096, y: 16192}
   vertical: 1
-  controlID: 4791
+  controlID: 201
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -223,7 +223,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 200}
   m_MaxSize: {x: 16192, y: 16192}
   vertical: 1
-  controlID: 4991
+  controlID: 139
 --- !u!114 &10
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -248,7 +248,7 @@ MonoBehaviour:
   m_MinSize: {x: 200, y: 100}
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
-  controlID: 4992
+  controlID: 140
 --- !u!114 &11
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -323,8 +323,8 @@ MonoBehaviour:
     y: 524
     width: 639.19995
     height: 206.79999
-  m_MinSize: {x: 101, y: 121}
-  m_MaxSize: {x: 4001, y: 4021}
+  m_MinSize: {x: 102, y: 121}
+  m_MaxSize: {x: 4002, y: 4021}
   m_ActualView: {fileID: 16}
   m_Panes:
   - {fileID: 16}
@@ -442,7 +442,7 @@ MonoBehaviour:
     m_VAllowExceedBaseRangeMin: 1
     m_VAllowExceedBaseRangeMax: 1
     m_ScaleWithWindow: 0
-    m_HSlider: 1
+    m_HSlider: 0
     m_VSlider: 1
     m_IgnoreScrollWheelUntilClicked: 0
     m_EnableMouseInput: 1
@@ -456,20 +456,20 @@ MonoBehaviour:
       y: 21
       width: 637.19995
       height: 164.79999
-    m_Scale: {x: 0.48909274, y: 0.48909274}
-    m_Translation: {x: 307.42612, y: 211.28806}
+    m_Scale: {x: 0.21504629, y: 0.2150463}
+    m_Translation: {x: 318.59998, y: 82.399994}
     m_MarginLeft: 0
     m_MarginRight: 0
     m_MarginTop: 0
     m_MarginBottom: 0
     m_LastShownAreaInsideMargins:
       serializedVersion: 2
-      x: -628.5641
-      y: -432
-      width: 1302.8203
-      height: 336.95038
+      x: -1481.5414
+      y: -383.17328
+      width: 2963.0828
+      height: 766.34656
     m_MinimalGUI: 1
-  m_defaultScale: 0.19074072
+  m_defaultScale: 0.21504629
   m_LastWindowPixelSize: {x: 796.49994, y: 232.24998}
   m_ClearInEditMode: 1
   m_NoCameraWarning: 1
@@ -506,10 +506,10 @@ MonoBehaviour:
     m_SaveData: []
   m_SceneHierarchy:
     m_TreeViewState:
-      scrollPos: {x: 0, y: 1982}
-      m_SelectedIDs: c86b0000
-      m_LastClickedID: 27592
-      m_ExpandedIDs: e0faffffac660000d06700003c6b0000666b0000da6c0000487100007a710000e8710000ec710000587200009473000014740000ee740000
+      scrollPos: {x: 0, y: 0}
+      m_SelectedIDs: 8cf9ffff
+      m_LastClickedID: -1652
+      m_ExpandedIDs: dcfaffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -825,9 +825,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: -6.3083076, y: 0.39497936, z: -29.443142}
+    m_Target: {x: 21.256865, y: 1.7374496, z: -41.700703}
     speed: 2
-    m_Value: {x: -6.3083076, y: 0.39497936, z: -29.443142}
+    m_Value: {x: 21.256865, y: 1.7374496, z: -41.700703}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -874,13 +874,13 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: 0.10392143, y: 0.8944025, z: -0.21318194, w: 0.38363647}
+    m_Target: {x: 0.082633466, y: 0.9318443, z: -0.24612893, w: 0.26012042}
     speed: 2
-    m_Value: {x: 0.1028576, y: 0.8937875, z: -0.2116362, w: 0.38180402}
+    m_Value: {x: 0.081755675, y: 0.9310372, z: -0.24595745, w: 0.25688687}
   m_Size:
-    m_Target: 3.9760268
+    m_Target: 3.3672204
     speed: 2
-    m_Value: 4.1633787
+    m_Value: 3.525885
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -1931,7 +1931,7 @@ MonoBehaviour:
     m_SaveData: []
   m_LockTracker:
     m_IsLocked: 0
-  m_LastSelectedObjectID: 27854
+  m_LastSelectedObjectID: -1574
 --- !u!114 &25
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -1973,7 +1973,7 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Models/3DTOYS/PREFABS
+    - Assets/Textures
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 0
@@ -1987,7 +1987,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 7e420000
     m_LastClickedID: 17022
-    m_ExpandedIDs: ffffffff00000000d07c00008a7d00008c7d00008e7d0000907d0000927d0000947d0000967d0000987d00009a7d00009c7d00009e7d0000a07d0000a27d0000a47d0000a67d0000a87d0000aa7d0000ac7d0000ae7d0000b07d0000b27d0000b47d0000b67d0000b87d0000ba7d0000bc7d0000be7d0000c87d0000ca7d0000cc7d0000ce7d00005c7e00006c7f0000727f0000
+    m_ExpandedIDs: 00000000547d00000e7e0000107e0000127e0000147e0000167e0000187e00001a7e00001c7e00001e7e0000207e0000227e0000247e0000267e0000287e00002a7e00002c7e00002e7e0000307e0000327e0000347e0000367e0000387e00003a7e00003c7e00003e7e0000407e0000427e0000447e0000467e0000487e00004a7e00004c7e00004e7e0000507e0000527e0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -2012,24 +2012,24 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_AssetTreeState:
-    scrollPos: {x: 0, y: 696.2}
+    scrollPos: {x: 0, y: 2120.2}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: ffffffff00000000d07c00008a7d00008c7d00008e7d0000907d0000927d0000947d0000967d0000987d00009a7d00009c7d00009e7d0000a07d0000a27d0000a47d0000a67d0000a87d0000aa7d0000ac7d0000ae7d0000b07d0000b27d0000b47d0000b67d0000b87d0000ba7d0000bc7d0000be7d0000c87d0000ca7d0000cc7d0000ce7d00005c7e00006c7f0000727f0000
+    m_ExpandedIDs: ffffffff00000000547d00000e7e0000107e0000127e0000147e0000167e0000187e00001a7e00001c7e00001e7e0000207e0000227e0000247e0000267e0000287e00002a7e00002c7e00002e7e0000307e0000327e0000347e0000367e0000387e00003a7e00003c7e00003e7e0000407e0000427e0000447e0000467e0000487e00004a7e00004c7e00004e7e0000507e0000527e0000c47e0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
-      m_Name: 
-      m_OriginalName: 
+      m_Name: TVRoomDrawing3
+      m_OriginalName: TVRoomDrawing3
       m_EditFieldRect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 0
         height: 0
-      m_UserData: 0
+      m_UserData: 11398
       m_IsWaitingForDelay: 0
       m_IsRenaming: 0
-      m_OriginalEventType: 11
+      m_OriginalEventType: 0
       m_IsRenamingFilename: 1
       m_ClientGUIView: {fileID: 14}
     m_SearchString: 
