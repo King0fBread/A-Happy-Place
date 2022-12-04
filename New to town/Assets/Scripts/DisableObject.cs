@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class DisableObject : MonoBehaviour
 {
-    private void Awake()
+    private void Start()
     {
         gameObject.SetActive(false);
     }
