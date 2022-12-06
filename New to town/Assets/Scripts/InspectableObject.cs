@@ -9,12 +9,14 @@ public class InspectableObject : MonoBehaviour
 
     private InspectionLogic _inspectLogic;
     private Button _nextInspectionObjectButton;
+    private Button _escapeButton;
 
     private bool _severalInspectableObjects;
     private int _currentObjectIndex = 0;
     private void Awake()
     {
         _nextInspectionObjectButton = GameObject.FindGameObjectWithTag("InspectionNextObjButton").GetComponent<Button>();
+        _escapeButton = GameObject.FindGameObjectWithTag("InspectionQuitButton").GetComponent<Button>();
         _inspectLogic = GameObject.FindObjectOfType<InspectionLogic>();
 
         _severalInspectableObjects = _inspectableObjects.Length > 1;
@@ -30,7 +32,7 @@ public class InspectableObject : MonoBehaviour
     }
     private void OnMouseDown()
     {
-        _inspectLogic.DisplayFirstObject(_inspectableObjects[0]);
+        _inspectLogic.DisplayObject(_inspectableObjects[_currentObjectIndex], _currentObjectIndex==0);
         if (_severalInspectableObjects)
         {
             _nextInspectionObjectButton.gameObject.SetActive(true);
@@ -39,7 +41,11 @@ public class InspectableObject : MonoBehaviour
     }
     private void DisplayNextObject()
     {
+        _currentObjectIndex++;
+        if (_currentObjectIndex < _inspectableObjects.Length)
+        {
 
+        }
     }
     //private void InspectObject()
     //{

@@ -6,6 +6,7 @@ TagManager:
   tags:
   - GameOrderManager
   - InspectionNextObjButton
+  - InspectionQuitButton
   layers:
   - Default
   - TransparentFX

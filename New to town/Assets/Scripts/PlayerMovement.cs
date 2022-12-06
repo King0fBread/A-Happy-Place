@@ -78,11 +78,17 @@ public class PlayerMovement : MonoBehaviour
         _playerSpeed = _walkingSpeed;
         _controllCinemachineShake.StartShake(_controllCinemachineShake._walkingShakeIntensity);
     }
+
+    //____________For referencing____________
     public IEnumerator TempDisableMovement(int secondsOfDisabling)
     {
         _canMove = false;
         yield return new WaitForSeconds(secondsOfDisabling);
         _canMove = true;
+    }
+    public void TogglePlayerMovement(bool state)
+    {
+        _canMove = state;
     }
     public void TogglePlayerRotaion(bool state)
     {
