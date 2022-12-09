@@ -24,6 +24,7 @@ public class InspectionLogic : MonoBehaviour
         {
             _playerMovement.TogglePlayerMovement(false);
             _playerMovement.TogglePlayerRotaion(false);
+            Cursor.lockState = CursorLockMode.None;
         }
         obj.transform.position = _inspectionTransform.position;
         obj.transform.rotation = _inspectionTransform.rotation;

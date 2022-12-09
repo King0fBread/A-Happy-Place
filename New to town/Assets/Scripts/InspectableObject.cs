@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class InspectableObject : MonoBehaviour
 {
     [SerializeField] private GameObject[] _inspectableObjects;
+    [SerializeField] private Transform[] _defaultObjTransforms;
 
     private InspectionLogic _inspectLogic;
     private Button _nextInspectionObjectButton;
@@ -20,8 +21,20 @@ public class InspectableObject : MonoBehaviour
         _inspectLogic = GameObject.FindObjectOfType<InspectionLogic>();
 
         _severalInspectableObjects = _inspectableObjects.Length > 1;
+        CashObjectsTransforms();
     }
+    private void CashObjectsTransforms()
+    {
+        //TODO: cash the rotation and position from these Transforms
+        _defaultObjTransforms = new Transform[_inspectableObjects.Length];
 
+        int index = 0;
+        foreach(GameObject obj in _inspectableObjects)
+        {
+            _defaultObjTransforms[index] = obj.transform;
+            index++;
+        }
+    }
     private void OnMouseEnter()
     {
         _inspectLogic.InspectionAvailable(true);
@@ -41,11 +54,19 @@ public class InspectableObject : MonoBehaviour
     }
     private void DisplayNextObject()
     {
-        _currentObjectIndex++;
-        if (_currentObjectIndex < _inspectableObjects.Length)
-        {
+        ResetCurrentObjectTransform();
 
+        _currentObjectIndex++;
+        if (_currentObjectIndex >= _inspectableObjects.Length)
+        {
+            _currentObjectIndex = 0;
         }
+        _inspectLogic.DisplayObject(_inspectableObjects[_currentObjectIndex]);
+    }
+    private void ResetCurrentObjectTransform()
+    {
+        _inspectableObjects[_currentObjectIndex].transform.position = _defaultObjTransforms[_currentObjectIndex].position;
+        _inspectableObjects[_currentObjectIndex].transform.rotation = _defaultObjTransforms[_currentObjectIndex].rotation;
     }
     //private void InspectObject()
     //{
