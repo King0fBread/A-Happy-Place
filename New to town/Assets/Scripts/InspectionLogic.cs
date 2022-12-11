@@ -30,9 +30,13 @@ public class InspectionLogic : MonoBehaviour
         obj.transform.rotation = _inspectionTransform.rotation;
 
     }
-    public void DisableInspectionUI()
+    public void QuitInspection()
     {
         _escapeButton.gameObject.SetActive(false);
         _nextObjectButton.gameObject.SetActive(false);
+
+        _playerMovement.TogglePlayerMovement(true);
+        _playerMovement.TogglePlayerRotaion(true);
+        Cursor.lockState = CursorLockMode.Locked;
     }
 }
