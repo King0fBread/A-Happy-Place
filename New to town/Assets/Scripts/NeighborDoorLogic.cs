@@ -18,12 +18,13 @@ public class NeighborDoorLogic : MonoBehaviour
             {
                 //first opening sound
                 _neighborDoorBlocker.CanPlayerLeaveRoom(true);
+                gameObject.SetActive(false);
             }
             else
             {
-                //closing sound when player runs away
+                _neighborDoorBlocker.CanPlayerLeaveRoom(false);
+                Destroy(gameObject);
             }
-            gameObject.SetActive(false);
         }
     }
 }
