@@ -9,14 +9,20 @@ public class MonsterPersuitLogic : MonoBehaviour
     [SerializeField] private NeighborDoorLogic _neighborDoorObj;
     [SerializeField] private RoomDoorBlocker _playerRoomBlocker;
     [SerializeField] private GameObject _safetyPoint;
+    [SerializeField] private GameObject _UI;
+    [SerializeField] private PlayerMovement _playerMovement;
     private Vector3 _playerCheckPointPosition;
     private Quaternion _playerCheckPointRotation;
     [Header("Timer")]
     [SerializeField] private float _deathTimerValue;
+    private float _defaultDeathTimer;
     private bool _chaseActive = false;
     [Header("Monster")]
     [SerializeField] private GameObject _monsterObj;
-    [SerializeField] private PlayerMovement _playerMovement;
+    private void Awake()
+    {
+        _defaultDeathTimer = _deathTimerValue;  
+    }
 
     private void OnTriggerEnter(Collider other)
     {
@@ -53,10 +59,21 @@ public class MonsterPersuitLogic : MonoBehaviour
     {
         _playerMovement.TogglePlayerMovement(false);
         _playerMovement.TogglePlayerRotaion(false);
+
         _monsterObj.SetActive(true);
-        //TODO: change time to animation's length
-        yield return new WaitForSeconds(4);
+        _UI.SetActive(false);
+
+        yield return new WaitForSeconds(3.36f);
+
         _playerMovement.gameObject.transform.position = _playerCheckPointPosition;
         _playerMovement.gameObject.transform.rotation = _playerCheckPointRotation;
+
+        _playerMovement.TogglePlayerMovement(true);
+        _playerMovement.TogglePlayerRotaion(true);
+
+        _monsterObj.SetActive(false);
+        _UI.SetActive(true);
+
+        _deathTimerValue = _defaultDeathTimer;
     }
 }
