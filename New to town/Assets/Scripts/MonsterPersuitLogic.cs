@@ -6,9 +6,9 @@ public class MonsterPersuitLogic : MonoBehaviour
 {
     [Header("Persuit")]
     [SerializeField] private int _delay;
-    [SerializeField] private NeighborDoorLogic _neighborDoorObj;
+    [SerializeField] private ApartmentSafePoint _safetyPoint;
+    [SerializeField] private RoomDoorBlocker _neighborRoomBlocker;
     [SerializeField] private RoomDoorBlocker _playerRoomBlocker;
-    [SerializeField] private GameObject _safetyPoint;
     [SerializeField] private GameObject _UI;
     [SerializeField] private PlayerMovement _playerMovement;
     private Vector3 _playerCheckPointPosition;
@@ -37,23 +37,16 @@ public class MonsterPersuitLogic : MonoBehaviour
     {
         yield return new WaitForSeconds(_delay);
         _chaseActive = true;
-        _safetyPoint.SetActive(true);
-        _neighborDoorObj.gameObject.SetActive(true);
+        _safetyPoint.gameObject.SetActive(true);
+        _neighborRoomBlocker.CanPlayerLeaveRoom(true);
         _playerRoomBlocker.CanPlayerLeaveRoom(true);
     }
     private void Update()
     {
-        if (_chaseActive)
-        {
-            if (_deathTimerValue > 0)
-            {
-                _deathTimerValue -= Time.deltaTime;
-            }
-            else
-            {
-                StartCoroutine(DieAndReturnToCheckpoint());
-            }
-        }
+        if (!_chaseActive) return;
+
+        if (_deathTimerValue > 0) _deathTimerValue -= Time.deltaTime;
+        else StartCoroutine(DieAndReturnToCheckpoint());
     }
     private IEnumerator DieAndReturnToCheckpoint()
     {
