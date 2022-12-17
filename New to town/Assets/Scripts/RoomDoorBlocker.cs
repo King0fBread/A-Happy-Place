@@ -8,8 +8,8 @@ public class RoomDoorBlocker : MonoBehaviour
     [SerializeField] private Transform _outsideDoorPoint;
     [SerializeField] private Transform _insideDoorPoint;
     [SerializeField] private GameObject _playerObject;
-    [SerializeField] private bool _canLeaveRoom = false;
-    private bool _isPlayerInside = true;
+    [SerializeField] private bool _isPlayerInside = true;
+    private bool _canLeaveRoom = false;
     private void OnMouseEnter()
     {
         _itemsToggle.ToggleFlashlightPermission(false);

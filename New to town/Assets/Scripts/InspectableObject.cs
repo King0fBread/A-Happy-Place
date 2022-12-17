@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class InspectableObject : MonoBehaviour
 {
     [SerializeField] private GameObject[] _inspectableObjects;
+    private FlashlightLogic _flashlightLogic;
     private Vector3[] _defaultObjPositions;
     private Quaternion[] _defaultObjRotations;
     private BoxCollider _thisCollider;
@@ -20,6 +21,7 @@ public class InspectableObject : MonoBehaviour
         _nextInspectionObjectButton = GameObject.FindGameObjectWithTag("InspectionNextObjButton").GetComponent<Button>();
         _escapeButton = GameObject.FindGameObjectWithTag("InspectionQuitButton").GetComponent<Button>();
         _inspectLogic = GameObject.FindObjectOfType<InspectionLogic>();
+        _flashlightLogic = GameObject.FindObjectOfType<FlashlightLogic>();
         _thisCollider = GetComponent<BoxCollider>();
 
         _severalInspectableObjects = _inspectableObjects.Length > 1;
@@ -54,6 +56,8 @@ public class InspectableObject : MonoBehaviour
             _nextInspectionObjectButton.onClick.AddListener(DisplayNextObject);
             _thisCollider.enabled = false;
         }
+        _flashlightLogic.TryForceToogleFlashlight(true);
+        _flashlightLogic.ToggleFlashlightPermisson(false);
         _escapeButton.gameObject.SetActive(true);
         _escapeButton.onClick.AddListener(QuitInspection);
     }
@@ -79,5 +83,6 @@ public class InspectableObject : MonoBehaviour
         _currentObjectIndex = 0;
         _thisCollider.enabled = true;
         _inspectLogic.QuitInspection();
+        _flashlightLogic.ToggleFlashlightPermisson(true);
     }
 }
