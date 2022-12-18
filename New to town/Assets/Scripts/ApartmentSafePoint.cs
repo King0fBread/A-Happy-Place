@@ -1,15 +1,18 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ApartmentSafePoint : MonoBehaviour
 {
     [SerializeField] private MonsterPersuitLogic _monsterPersuit;
+    private bool _persuitIsActive = false;
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player") && _persuitIsActive)
         {
-            _monsterPersuit.gameObject.SetActive(false);
+            Destroy(_monsterPersuit.gameObject);
         }
+    }
+    public void AllowPersuitDestruction()
+    {
+        _persuitIsActive = true;
     }
 }

@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class MonsterPersuitLogic : MonoBehaviour
@@ -13,10 +12,11 @@ public class MonsterPersuitLogic : MonoBehaviour
     [SerializeField] private PlayerMovement _playerMovement;
     private Vector3 _playerCheckPointPosition;
     private Quaternion _playerCheckPointRotation;
+    private bool _persuitInProgress = false;
     [Header("Timer")]
     [SerializeField] private float _deathTimerValue;
     private float _defaultDeathTimer;
-    private bool _chaseActive = false;
+    private bool _canStartCountdown = false;
     [Header("Monster")]
     [SerializeField] private GameObject _monsterObj;
     private void Awake()
@@ -26,7 +26,7 @@ public class MonsterPersuitLogic : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player") && !_persuitInProgress)
         {
             _playerCheckPointPosition = other.gameObject.transform.position;
             _playerCheckPointRotation = other.gameObject.transform.rotation;
@@ -35,15 +35,18 @@ public class MonsterPersuitLogic : MonoBehaviour
     }
     private IEnumerator BeginPersuit()
     {
+        _persuitInProgress = true;
+
         yield return new WaitForSeconds(_delay);
-        _chaseActive = true;
+        _canStartCountdown = true;
         _safetyPoint.gameObject.SetActive(true);
+        _safetyPoint.AllowPersuitDestruction();
         _neighborRoomBlocker.CanPlayerLeaveRoom(true);
         _playerRoomBlocker.CanPlayerLeaveRoom(true);
     }
     private void Update()
     {
-        if (!_chaseActive) return;
+        if (!_canStartCountdown) return;
 
         if (_deathTimerValue > 0) _deathTimerValue -= Time.deltaTime;
         else StartCoroutine(DieAndReturnToCheckpoint());
@@ -57,6 +60,8 @@ public class MonsterPersuitLogic : MonoBehaviour
         _UI.SetActive(false);
 
         yield return new WaitForSeconds(3.36f);
+
+        _persuitInProgress = false;
 
         _playerMovement.gameObject.transform.position = _playerCheckPointPosition;
         _playerMovement.gameObject.transform.rotation = _playerCheckPointRotation;
