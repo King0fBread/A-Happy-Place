@@ -32,6 +32,6 @@ public class SleepingLogic : MonoBehaviour
     private void CheckSleepSessionIndex()
     {
         if (_sleepSessionIndex == 1) PhoneMessagesLogic.instance.ActivateConversation("Second");
-        //if (_sleepSessionIndex == 2) PhoneMessagesLogic.instance.ActivateConversation("something");
+        if (_sleepSessionIndex == 2) PhoneMessagesLogic.instance.ActivateConversation("Eights");
     }
 }

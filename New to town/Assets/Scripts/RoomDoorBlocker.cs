@@ -7,7 +7,9 @@ public class RoomDoorBlocker : MonoBehaviour
     [SerializeField] private Transform _insideDoorPoint;
     [SerializeField] private GameObject _playerObject;
     [SerializeField] private bool _isPlayerInside = true;
-    private bool _canLeaveRoom = false;
+    [SerializeField] private bool _canGoBack = true;
+    private bool _enteredOneWayRoom = false;
+    private bool _canCurrentlyLeaveRoom = false;
     private void OnMouseEnter()
     {
         _itemsToggle.ToggleFlashlightPermission(false);
@@ -18,21 +20,18 @@ public class RoomDoorBlocker : MonoBehaviour
     }
     private void OnMouseDown()
     {
-        if (!_canLeaveRoom)
+        if (_enteredOneWayRoom) return;
+
+        if (!_canCurrentlyLeaveRoom)
         {
             print("cant go");
         }
-        else if (_canLeaveRoom)
+        else if (_canCurrentlyLeaveRoom)
         {
-            if (_isPlayerInside)
-            {
-                ChangePosition(_outsideDoorPoint);
-        
-            }
-            else if (!_isPlayerInside)
-            {
-                ChangePosition(_insideDoorPoint);
-            }
+            if (!_canGoBack) _enteredOneWayRoom = true;
+
+            if (_isPlayerInside) ChangePosition(_outsideDoorPoint);
+            else if (!_isPlayerInside) ChangePosition(_insideDoorPoint);
         }
     }
     private void ChangePosition(Transform newTransform)
@@ -43,6 +42,6 @@ public class RoomDoorBlocker : MonoBehaviour
     }
     public void CanPlayerLeaveRoom(bool canLeave)
     {
-        _canLeaveRoom = canLeave;
+        _canCurrentlyLeaveRoom = canLeave;
     }
 }

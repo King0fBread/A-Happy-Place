@@ -17,7 +17,11 @@ public class PlayerRoomPeephole : MonoBehaviour
         _itemsToggle.ToggleFlashlightPermission(false);
         _itemsToggle.ManuallyDisablePhone();
 
-        if (_monsterIsOutside) DisableFuturePeeping();
+        if (_monsterIsOutside)
+        {
+            PhoneMessagesLogic.instance.ActivateConversation("Seventh");
+            DisableFuturePeeping();
+        }
     }
     private void OnMouseUp()
     {
