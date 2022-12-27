@@ -3,12 +3,13 @@ using UnityEngine;
 
 public class MonsterPersuitLogic : MonoBehaviour
 {
-    [Header("Persuit")]
-    [SerializeField] private int _delay;
+    [Header("Persuit references")]
+    [SerializeField] private int _delayInSeconds;
     [SerializeField] private ApartmentSafePoint _safetyPoint;
     [SerializeField] private RoomDoorBlocker _neighborRoomBlocker;
     [SerializeField] private RoomDoorBlocker _playerRoomBlocker;
-    [SerializeField] private GameObject _UI;
+    [SerializeField] private GameObject _activePersuitText;
+    [SerializeField] private GameObject _playerUI;
     [SerializeField] private PlayerMovement _playerMovement;
     private Vector3 _playerCheckPointPosition;
     private Quaternion _playerCheckPointRotation;
@@ -37,8 +38,9 @@ public class MonsterPersuitLogic : MonoBehaviour
     {
         _persuitInProgress = true;
 
-        yield return new WaitForSeconds(_delay);
+        yield return new WaitForSeconds(_delayInSeconds);
         _canStartCountdown = true;
+        _activePersuitText.SetActive(true);
         _safetyPoint.gameObject.SetActive(true);
         _safetyPoint.AllowPersuitDestruction();
         _neighborRoomBlocker.CanPlayerLeaveRoom(true);
@@ -57,7 +59,8 @@ public class MonsterPersuitLogic : MonoBehaviour
         _playerMovement.TogglePlayerRotaion(false);
 
         _monsterObj.SetActive(true);
-        _UI.SetActive(false);
+        _playerUI.SetActive(false);
+        _activePersuitText.SetActive(false);
 
         yield return new WaitForSeconds(3.36f);
 
@@ -70,8 +73,13 @@ public class MonsterPersuitLogic : MonoBehaviour
         _playerMovement.TogglePlayerRotaion(true);
 
         _monsterObj.SetActive(false);
-        _UI.SetActive(true);
+        _playerUI.SetActive(true);
 
         _deathTimerValue = _defaultDeathTimer;
+    }
+    private void OnDestroy()
+    {
+        Destroy(_activePersuitText);
+        Destroy(_monsterObj);
     }
 }
