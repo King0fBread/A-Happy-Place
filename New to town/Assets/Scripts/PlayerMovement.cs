@@ -70,6 +70,8 @@ public class PlayerMovement : MonoBehaviour
     {
         _playerSpeed = _runningSpeed;
         _controllCinemachineShake.StartShake(_controllCinemachineShake._runningShakeIntensity);
+        //fix to only play one instance
+        SoundsManager.instance.PlaySound(SoundsManager.Sounds.PlayerFootstepsRunning);
     }
     private void SetSpeedToWalking()
     {
