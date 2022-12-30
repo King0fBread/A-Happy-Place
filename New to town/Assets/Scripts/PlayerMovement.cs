@@ -22,6 +22,7 @@ public class PlayerMovement : MonoBehaviour
     [Header("References")]
     [SerializeField] private ControllCinemachineShake _controllCinemachineShake;
     [SerializeField] private StaminaLogic _staminaLogic;
+    [SerializeField] private ConcreteWalkingSoundTrigger _concreteWalkingSoundTrigger;
     private void Awake()
     {
         _thisRb = GetComponent<Rigidbody>();
@@ -33,9 +34,9 @@ public class PlayerMovement : MonoBehaviour
     {
         if (_canMove)
         {
-            if (_canRotate) RotatePlayer();
             MovePlayer();
             IsPlayerMoving();
+            if (_canRotate) RotatePlayer();
         }
     }
     private void MovePlayer()
@@ -71,12 +72,24 @@ public class PlayerMovement : MonoBehaviour
         _playerSpeed = _runningSpeed;
         _controllCinemachineShake.StartShake(_controllCinemachineShake._runningShakeIntensity);
         //fix to only play one instance
-        SoundsManager.instance.PlaySound(SoundsManager.Sounds.PlayerFootstepsRunning);
     }
     private void SetSpeedToWalking()
     {
         _playerSpeed = _walkingSpeed;
         _controllCinemachineShake.StartShake(_controllCinemachineShake._walkingShakeIntensity);
+    }
+    private void PlaySoundOnce(SoundsManager.Sounds soundToPlayOnce)
+    {
+        bool isPlaying = false;
+        if (!isPlaying)
+        {
+            SoundsManager.instance.PlaySound(soundToPlayOnce);
+            isPlaying = true;
+        }
+    }
+    private void PlayCorrectWalkingSound()
+    {
+
     }
 
     //____________For referencing____________
