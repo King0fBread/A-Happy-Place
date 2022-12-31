@@ -60,7 +60,8 @@ public class SoundsManager : MonoBehaviour
     public void PlaySound(Sounds soundToPlay)
     {
         GetRequestedAudioClipAndAudioSource(soundToPlay, out _audioSource, out _audioClip);
-        _audioSource.PlayOneShot(_audioClip);
+        if (!_audioSource.isPlaying)
+            _audioSource.PlayOneShot(_audioClip);
     }
     public void StopSound(Sounds soundToStop)
     {

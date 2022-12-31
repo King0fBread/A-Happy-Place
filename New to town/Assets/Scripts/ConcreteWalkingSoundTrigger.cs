@@ -1,23 +1,23 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ConcreteWalkingSoundTrigger : MonoBehaviour
 {
-    [HideInInspector] public bool playerIsOnConcrete { get; private set; }
-    private void OnTriggerEnter(Collider other)
+    [SerializeField] private float _raycastDistance;
+    [SerializeField] private LayerMask _concreteLayer;
+    public bool playerIsOnConcrete { get; private set; }
+    private Transform _transform;
+    private Vector3 _vector3Down;
+    private void Awake()
     {
-        if (other.CompareTag("Player"))
-        {
-            print("player on concrete");
-            playerIsOnConcrete = true;
-        }
+        _transform = gameObject.transform;
+        _vector3Down = Vector3.down;
     }
-    private void OnTriggerExit(Collider other)
+    private void Update()
     {
-        if (other.CompareTag("Player"))
-        {
-            playerIsOnConcrete = false;
-        }
+        GroundCheckForConcrete();
+    }
+    private void GroundCheckForConcrete()
+    {
+        playerIsOnConcrete = Physics.Raycast(_transform.position, _vector3Down, _raycastDistance, _concreteLayer);
     }
 }

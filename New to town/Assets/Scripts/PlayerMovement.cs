@@ -65,6 +65,10 @@ public class PlayerMovement : MonoBehaviour
         else
         {
             _controllCinemachineShake.StartShake(_controllCinemachineShake._idleShakeIntensity);
+
+            SoundsManager.instance.StopSound(SoundsManager.Sounds.PlayerFootstepsRunning);
+            SoundsManager.instance.StopSound(SoundsManager.Sounds.PlayerFootstepsWalkingConcrete);
+            SoundsManager.instance.StopSound(SoundsManager.Sounds.PlayerFootstepsWalkingWood);
         }
     }
     private void SetSpeedToRunning()
@@ -72,24 +76,26 @@ public class PlayerMovement : MonoBehaviour
         _playerSpeed = _runningSpeed;
         _controllCinemachineShake.StartShake(_controllCinemachineShake._runningShakeIntensity);
         //fix to only play one instance
+        SoundsManager.instance.PlaySound(SoundsManager.Sounds.PlayerFootstepsRunning);
     }
     private void SetSpeedToWalking()
     {
         _playerSpeed = _walkingSpeed;
         _controllCinemachineShake.StartShake(_controllCinemachineShake._walkingShakeIntensity);
-    }
-    private void PlaySoundOnce(SoundsManager.Sounds soundToPlayOnce)
-    {
-        bool isPlaying = false;
-        if (!isPlaying)
-        {
-            SoundsManager.instance.PlaySound(soundToPlayOnce);
-            isPlaying = true;
-        }
+
+        SoundsManager.instance.StopSound(SoundsManager.Sounds.PlayerFootstepsRunning);
+        PlayCorrectWalkingSound();
     }
     private void PlayCorrectWalkingSound()
     {
-
+        if (_concreteWalkingSoundTrigger.playerIsOnConcrete)
+        {
+            SoundsManager.instance.PlaySound(SoundsManager.Sounds.PlayerFootstepsWalkingConcrete);
+        }
+        else
+        {
+            SoundsManager.instance.PlaySound(SoundsManager.Sounds.PlayerFootstepsWalkingWood);
+        }
     }
 
     //____________For referencing____________
