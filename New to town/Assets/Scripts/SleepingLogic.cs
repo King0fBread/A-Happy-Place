@@ -28,10 +28,19 @@ public class SleepingLogic : MonoBehaviour
         _playerCameraObj.transform.rotation = _sleepTransform.rotation;
         _playerMovement.StartCoroutine("TempDisableMovement", 4);
         gameObject.SetActive(false);
+
+        DisableWalkingSounds();
+        SoundsManager.instance.PlaySound(SoundsManager.Sounds.EnvironmentBed);
     }
     private void CheckSleepSessionIndex()
     {
         if (_sleepSessionIndex == 1) PhoneMessagesLogic.instance.ActivateConversation("Second");
         if (_sleepSessionIndex == 2) PhoneMessagesLogic.instance.ActivateConversation("Eights");
+    }
+    private void DisableWalkingSounds()
+    {
+        SoundsManager.instance.StopSound(SoundsManager.Sounds.PlayerFootstepsWalkingConcrete);
+        SoundsManager.instance.StopSound(SoundsManager.Sounds.PlayerFootstepsWalkingWood);
+        SoundsManager.instance.StopSound(SoundsManager.Sounds.PlayerFootstepsRunning);
     }
 }

@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class StudyingDeskLogic : MonoBehaviour
@@ -20,8 +18,10 @@ public class StudyingDeskLogic : MonoBehaviour
         _playerMovement.StartCoroutine("TempDisableMovement", 4);
         _playerObjectTransform.position = _studyingTransfrom.position;
         _playerCamTransform.rotation = _studyingTransfrom.rotation;
-        Destroy(gameObject);
 
         PhoneMessagesLogic.instance.ActivateConversation("Third");
+        SoundsManager.instance.PlaySound(SoundsManager.Sounds.EnvironmentStudying);
+
+        Destroy(gameObject);
     }
 }

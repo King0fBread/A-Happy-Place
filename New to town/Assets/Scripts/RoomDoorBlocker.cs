@@ -8,6 +8,7 @@ public class RoomDoorBlocker : MonoBehaviour
     [SerializeField] private GameObject _playerObject;
     [SerializeField] private bool _isPlayerInside = true;
     [SerializeField] private bool _canGoBack = true;
+    [SerializeField] private bool _isMetalDoor = false;
     private bool _enteredOneWayRoom = false;
     private bool _canCurrentlyLeaveRoom = false;
     private void OnMouseEnter()
@@ -32,6 +33,15 @@ public class RoomDoorBlocker : MonoBehaviour
 
             if (_isPlayerInside) ChangePosition(_outsideDoorPoint);
             else if (!_isPlayerInside) ChangePosition(_insideDoorPoint);
+
+            if (_isMetalDoor)
+            {
+                SoundsManager.instance.PlaySound(SoundsManager.Sounds.EnvironmentMetalDoorOpens);
+            }
+            else
+            {
+                SoundsManager.instance.PlaySound(SoundsManager.Sounds.EnvironmentDoorOpens);
+            }
         }
     }
     private void ChangePosition(Transform newTransform)

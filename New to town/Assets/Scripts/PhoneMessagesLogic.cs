@@ -56,6 +56,8 @@ public class PhoneMessagesLogic: MonoBehaviour
         _currentConversation.isPlayersTurnToReply = true;
         _currentReplyIndex++;
 
+        SoundsManager.instance.PlaySound(SoundsManager.Sounds.PhoneMessageRecieved);
+
         //checking if the convo is over from bot's side, if true - enabling a script object
         if (ConversationIsFinished() && _currentConversation.storylineScriptToTrigger != null)
             _currentConversation.storylineScriptToTrigger.SetActive(true);
@@ -82,6 +84,9 @@ public class PhoneMessagesLogic: MonoBehaviour
             _currentConversation.conversationRepliesInOrder[_currentReplyIndex].SetActive(true);
             _currentReplyIndex++;
             _currentConversation.isPlayersTurnToReply = false;
+
+            SoundsManager.instance.PlaySound(SoundsManager.Sounds.PhoneMessageSent);
+
             if (_currentReplyIndex <= _currentConversation.maxReplyIndex) StartCoroutine("SendReply");
             else
             {

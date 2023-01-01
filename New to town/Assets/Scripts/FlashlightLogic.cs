@@ -19,6 +19,8 @@ public class FlashlightLogic : MonoBehaviour
         {
             _lightSource.SetActive(!_flashlightCurrentState);
             _flashlightCurrentState = !_flashlightCurrentState;
+
+            SoundsManager.instance.PlaySound(SoundsManager.Sounds.PlayerFlashlight);
         }
     }
     public void AllowFlashlightUse(bool value)

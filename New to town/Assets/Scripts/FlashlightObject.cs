@@ -7,5 +7,7 @@ public class FlashlightObject : MonoBehaviour
     {
         _flashlightLogic.AllowFlashlightUse(true);
         gameObject.SetActive(false);
+
+        SoundsManager.instance.PlaySound(SoundsManager.Sounds.EnvironmentPickupItem);
     }
 }

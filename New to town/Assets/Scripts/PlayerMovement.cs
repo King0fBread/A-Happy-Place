@@ -77,6 +77,7 @@ public class PlayerMovement : MonoBehaviour
         _controllCinemachineShake.StartShake(_controllCinemachineShake._runningShakeIntensity);
         //fix to only play one instance
         SoundsManager.instance.PlaySound(SoundsManager.Sounds.PlayerFootstepsRunning);
+        StopCorrectWalkingSound();
     }
     private void SetSpeedToWalking()
     {
@@ -90,11 +91,24 @@ public class PlayerMovement : MonoBehaviour
     {
         if (_concreteWalkingSoundTrigger.playerIsOnConcrete)
         {
+            SoundsManager.instance.StopSound(SoundsManager.Sounds.PlayerFootstepsWalkingWood);
             SoundsManager.instance.PlaySound(SoundsManager.Sounds.PlayerFootstepsWalkingConcrete);
         }
         else
         {
+            SoundsManager.instance.StopSound(SoundsManager.Sounds.PlayerFootstepsWalkingConcrete);
             SoundsManager.instance.PlaySound(SoundsManager.Sounds.PlayerFootstepsWalkingWood);
+        }
+    }
+    private void StopCorrectWalkingSound()
+    {
+        if (_concreteWalkingSoundTrigger.playerIsOnConcrete)
+        {
+            SoundsManager.instance.StopSound(SoundsManager.Sounds.PlayerFootstepsWalkingConcrete);
+        }
+        else
+        {
+            SoundsManager.instance.StopSound(SoundsManager.Sounds.PlayerFootstepsWalkingWood);
         }
     }
 
