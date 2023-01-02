@@ -20,6 +20,8 @@ public class FlashlightLogic : MonoBehaviour
             _lightSource.SetActive(!_flashlightCurrentState);
             _flashlightCurrentState = !_flashlightCurrentState;
 
+            //interrupting the previous click to correctly play the sound
+            SoundsManager.instance.StopSound(SoundsManager.Sounds.PlayerFlashlight);
             SoundsManager.instance.PlaySound(SoundsManager.Sounds.PlayerFlashlight);
         }
     }

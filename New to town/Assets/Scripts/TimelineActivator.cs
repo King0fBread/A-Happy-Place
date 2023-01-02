@@ -23,6 +23,7 @@ public class TimelineActivator : MonoBehaviour
             _playerAnimator.enabled = true;
             _director.Play();
 
+            _playerFlashlight.TryForceToogleFlashlight(true);
             _playerFlashlight.ToggleFlashlightPermisson(false);
             _playerUI.SetActive(false);
         }

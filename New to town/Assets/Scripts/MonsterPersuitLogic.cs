@@ -45,6 +45,8 @@ public class MonsterPersuitLogic : MonoBehaviour
         _safetyPoint.AllowPersuitDestruction();
         _neighborRoomBlocker.CanPlayerLeaveRoom(true);
         _playerRoomBlocker.CanPlayerLeaveRoom(true);
+
+        SoundsManager.instance.PlaySound(SoundsManager.Sounds.MonsterOneBreath);
     }
     private void Update()
     {
@@ -61,6 +63,8 @@ public class MonsterPersuitLogic : MonoBehaviour
         _monsterObj.SetActive(true);
         _playerUI.SetActive(false);
         _activePersuitText.SetActive(false);
+
+        SoundsManager.instance.PlaySound(SoundsManager.Sounds.MonsterGrowl);
 
         yield return new WaitForSeconds(3.36f);
 
