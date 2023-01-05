@@ -4,21 +4,24 @@ using UnityEngine;
 
 public class MenuCameraDefaultPositionLogic : MonoBehaviour
 {
-    [SerializeField] private Transform _camera;
+    public bool cameraIsNotFocused { get; set; }
+    [SerializeField] private GameObject _resetButtonObject;
     private Vector3 _defaultCamPosition;
     private Quaternion _defaultCamRotation;
     private void Awake()
     {
-        _defaultCamPosition = _camera.position;
-        _defaultCamRotation = _camera.rotation;
+        _defaultCamPosition = transform.position;
+        _defaultCamRotation = transform.rotation;
+        cameraIsNotFocused = true;
 
-        gameObject.SetActive(false);
+        _resetButtonObject.SetActive(false);
     }
     public void ResetCamPosition()
     {
-        _camera.position = _defaultCamPosition;
-        _camera.rotation = _defaultCamRotation;
+        transform.position = _defaultCamPosition;
+        transform.rotation = _defaultCamRotation;
+        cameraIsNotFocused = true;
 
-        gameObject.SetActive(false);
+        _resetButtonObject.SetActive(false);
     }
 }
