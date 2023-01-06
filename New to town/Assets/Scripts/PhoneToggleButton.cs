@@ -55,4 +55,8 @@ public class PhoneToggleButton : MonoBehaviour
     {
         return _canUsePhone;
     }
+    private void OnDestroy()
+    {
+        _eventsManager.OnEKeyPressed -= ToggleAlphaAndPhone;
+    }
 }

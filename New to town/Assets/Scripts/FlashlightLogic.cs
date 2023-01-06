@@ -50,4 +50,8 @@ public class FlashlightLogic : MonoBehaviour
             _flashlightWasTemporarilyDisabled = false;
         }
     }
+    private void OnDestroy()
+    {
+        _eventsManager.OnLeftMouseButtonPressed -= UseFlashlight;
+    }
 }
