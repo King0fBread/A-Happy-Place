@@ -43,7 +43,7 @@ public class MenuTeleportationLogic : MonoBehaviour
 
             case "MenuDoor":
                 //async scene load
-                SceneManager.LoadScene(1);
+                SceneLoader.LoadScene(SceneLoader.Scenes.GameScene);
                 break;
             case "MenuPaper":
                 break;
