@@ -17,7 +17,7 @@ public class MonsterPersuitLogic : MonoBehaviour
     [Header("Timer")]
     [SerializeField] private float _deathTimerValue;
     private float _defaultDeathTimer;
-    private bool _canStartCountdown = false;
+    private bool _canDoCountdown = false;
     [Header("Monster")]
     [SerializeField] private GameObject _monsterObj;
     private void Awake()
@@ -39,7 +39,7 @@ public class MonsterPersuitLogic : MonoBehaviour
         _persuitInProgress = true;
 
         yield return new WaitForSeconds(_delayInSeconds);
-        _canStartCountdown = true;
+        _canDoCountdown = true;
         _activePersuitText.SetActive(true);
         _safetyPoint.gameObject.SetActive(true);
         _safetyPoint.AllowPersuitDestruction();
@@ -50,10 +50,17 @@ public class MonsterPersuitLogic : MonoBehaviour
     }
     private void Update()
     {
-        if (!_canStartCountdown) return;
+        if (!_canDoCountdown) return;
 
-        if (_deathTimerValue > 0) _deathTimerValue -= Time.deltaTime;
-        else StartCoroutine(DieAndReturnToCheckpoint());
+        if (_deathTimerValue > 0)
+        {
+            _deathTimerValue -= Time.deltaTime;
+        }
+        else 
+        {
+            _canDoCountdown = false;
+            StartCoroutine(DieAndReturnToCheckpoint()); 
+        }
     }
     private IEnumerator DieAndReturnToCheckpoint()
     {
