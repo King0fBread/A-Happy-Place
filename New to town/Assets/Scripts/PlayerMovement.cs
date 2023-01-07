@@ -112,7 +112,6 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    //____________For referencing____________
     public IEnumerator TempDisableMovement(int secondsOfDisabling)
     {
         _canMove = false;

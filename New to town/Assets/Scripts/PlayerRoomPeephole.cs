@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class PlayerRoomPeephole : MonoBehaviour
@@ -6,6 +7,7 @@ public class PlayerRoomPeephole : MonoBehaviour
     [SerializeField] private ToggleItemsUse _itemsToggle;
 
     [SerializeField] private GameObject _monsterObject;
+
     private bool _monsterIsOutside = false;
     private bool _canPeep = true;
     private void OnMouseDown()
@@ -44,6 +46,7 @@ public class PlayerRoomPeephole : MonoBehaviour
     {
         _monsterIsOutside = true;
         _monsterObject.SetActive(true);
+        SoundsManager.instance.PlaySound(SoundsManager.Sounds.MonsterDoorKnock);
     }
     public void EnablePeeping()
     {

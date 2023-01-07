@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 
 public class FlashlightLogic : MonoBehaviour
@@ -28,6 +29,12 @@ public class FlashlightLogic : MonoBehaviour
     public void AllowFlashlightUse(bool value)
     {
         _flashlightCanBeUsed = value;
+    }
+    public IEnumerator BlockFlashlightUseCoroutine(int blockTimeInSeconds)
+    {
+        _flashlightCanBeUsed = false;
+        yield return new WaitForSeconds(blockTimeInSeconds);
+        _flashlightCanBeUsed = true;
     }
     public void TryForceToogleFlashlight(bool valueToToggle)
     {

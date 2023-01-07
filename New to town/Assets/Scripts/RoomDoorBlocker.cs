@@ -54,4 +54,8 @@ public class RoomDoorBlocker : MonoBehaviour
     {
         _canCurrentlyLeaveRoom = canLeave;
     }
+    public void SwitchPlayersPosition()
+    {
+        _isPlayerInside = !_isPlayerInside;
+    }
 }

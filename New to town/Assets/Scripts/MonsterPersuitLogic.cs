@@ -70,6 +70,8 @@ public class MonsterPersuitLogic : MonoBehaviour
 
         _persuitInProgress = false;
 
+        _neighborRoomBlocker.SwitchPlayersPosition();
+
         _playerMovement.gameObject.transform.position = _playerCheckPointPosition;
         _playerMovement.gameObject.transform.rotation = _playerCheckPointRotation;
 
