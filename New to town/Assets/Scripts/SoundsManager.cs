@@ -55,6 +55,7 @@ public class SoundsManager : MonoBehaviour
         MonsterGrowl,
         MonsterWindowKnock,
         MonsterDoorKnock,
+        EnvironmentWindbells,
     }
     public void PlaySound(Sounds soundToPlay)
     {

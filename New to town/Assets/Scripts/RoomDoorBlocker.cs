@@ -23,10 +23,8 @@ public class RoomDoorBlocker : MonoBehaviour
     {
         if (_enteredOneWayRoom) return;
 
-        if (!_canCurrentlyLeaveRoom)
-        {
-            print("cant go");
-        }
+        if (!_canCurrentlyLeaveRoom) return;
+
         else if (_canCurrentlyLeaveRoom)
         {
             if (!_canGoBack) _enteredOneWayRoom = true;

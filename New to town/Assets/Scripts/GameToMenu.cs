@@ -17,6 +17,7 @@ public class GameToMenu : MonoBehaviour
         _blackScreen.SetActive(true);
         SoundsManager.instance.PlaySound(SoundsManager.Sounds.EnvironmentMetalDoorOpens);
         yield return new WaitForSeconds(1);
+        Cursor.lockState = CursorLockMode.None;
         SceneManager.LoadScene(0);
     }
 }
