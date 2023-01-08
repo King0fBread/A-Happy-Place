@@ -56,13 +56,13 @@ public class SoundsManager : MonoBehaviour
         MonsterWindowKnock,
         MonsterDoorKnock,
         EnvironmentWindbells,
+        MonsterShocker,
     }
     public void PlaySound(Sounds soundToPlay)
     {
         GetRequestedAudioClipAndAudioSource(soundToPlay, out _audioSource, out _audioClip);
         if (!_audioSource.isPlaying)
             _audioSource.PlayOneShot(_audioClip);
-        print("played " + _audioClip.name);
     }
     public void StopSound(Sounds soundToStop)
     {

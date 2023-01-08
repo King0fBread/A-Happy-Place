@@ -14,7 +14,7 @@ public class BrightnessManager : MonoBehaviour
     {
         _brightnessSlider = GetComponent<Slider>();
         _ppProfile.TryGetSettings(out _exposure);
-        _brightnessValue = PlayerPrefs.GetFloat("Brightness",1);
+        _brightnessValue = PlayerPrefs.GetFloat("Brightness",0.5f);
 
         _exposure.keyValue.value = _brightnessValue;
         _brightnessSlider.value = _brightnessValue;

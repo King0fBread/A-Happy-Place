@@ -21,6 +21,7 @@ public class PlayerRoomPeephole : MonoBehaviour
 
         if (_monsterIsOutside)
         {
+            SoundsManager.instance.PlaySound(SoundsManager.Sounds.MonsterShocker);
             PhoneMessagesLogic.instance.ActivateConversation("Seventh");
             DisableFuturePeeping();
         }
