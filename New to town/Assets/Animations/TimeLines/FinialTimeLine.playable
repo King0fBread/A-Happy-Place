@@ -113,7 +113,7 @@ MonoBehaviour:
     m_PreExtrapolationTime: 0
     m_DisplayName: MonsterOneBreath
   - m_Version: 1
-    m_Start: 12.588707482993197
+    m_Start: 12.28870748299455
     m_ClipIn: 0
     m_Asset: {fileID: -1938426082478626712}
     m_Duration: 2.9779591836734696
@@ -146,7 +146,7 @@ MonoBehaviour:
     m_PreExtrapolationTime: 0
     m_DisplayName: MonsterGrowl
   - m_Version: 1
-    m_Start: 15.566666666666666
+    m_Start: 15.26666666666802
     m_ClipIn: 0
     m_Asset: {fileID: 3868686043600531643}
     m_Duration: 3.842902494331066
@@ -1155,8 +1155,8 @@ MonoBehaviour:
   m_Name: AnimationPlayableAsset
   m_EditorClassIdentifier: 
   m_Clip: {fileID: 7400000, guid: 52f3a7cae3b564943934e8cdb68fd8a9, type: 2}
-  m_Position: {x: 32.668533, y: 29.907328, z: 15.8979845}
-  m_EulerAngles: {x: 0.024, y: 0, z: 0}
+  m_Position: {x: 28.978725, y: 29.963232, z: 2.9593241}
+  m_EulerAngles: {x: 0.022, y: 62.845, z: 0.014}
   m_UseTrackMatchFields: 1
   m_MatchTargetFields: 63
   m_RemoveStartOffset: 1
@@ -1445,7 +1445,7 @@ MonoBehaviour:
   m_Name: AnimationPlayableAsset
   m_EditorClassIdentifier: 
   m_Clip: {fileID: 7400000, guid: b9eebc53e45d2d6449c8966c3ce675c1, type: 2}
-  m_Position: {x: 9.9849615, y: 30.076395, z: 12.835031}
+  m_Position: {x: 9.984121, y: 29.96561, z: 12.826985}
   m_EulerAngles: {x: -2.034, y: 125.103, z: 3.647}
   m_UseTrackMatchFields: 1
   m_MatchTargetFields: 63

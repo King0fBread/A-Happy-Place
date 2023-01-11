@@ -7,6 +7,8 @@ public class SettingsRequestListener : MonoBehaviour
     [SerializeField] private PlayerMovement _playerMovement;
     [SerializeField] private FlashlightLogic _flashlightLogic;
     [SerializeField] private GameObject _settingsObj;
+    [SerializeField] private GameObject _settingsIcon;
+    private bool _firstToggle = true;
     private bool _currentInteractionsActivityState;
     private void Awake()
     {
@@ -14,6 +16,11 @@ public class SettingsRequestListener : MonoBehaviour
     }
     private void ToggleSettings(object sender, EventArgs args)
     {
+        if (_firstToggle)
+        {
+            Destroy(_settingsIcon);
+            _firstToggle = false;
+        }
         _settingsObj.SetActive(!_settingsObj.activeSelf);
         _currentInteractionsActivityState = !_settingsObj.activeSelf;
 

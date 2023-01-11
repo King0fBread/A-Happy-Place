@@ -15,8 +15,8 @@ public class PlayerMovement : MonoBehaviour
     [Header("Rotation")]
     [SerializeField] private Transform _orientationObjTransform;
     [SerializeField] private Transform _cameraTransform;
-    [SerializeField] private float _rotationSensitivityX;
-    [SerializeField] private float _rotationSetsitivityY;
+    public float rotationSensitivityX;
+    public float rotationSetsitivityY;
     private float _rotationX;
     private float _rotationY;
     [Header("References")]
@@ -47,8 +47,8 @@ public class PlayerMovement : MonoBehaviour
     }
     private void RotatePlayer()
     {
-        float mouseRotationX = Input.GetAxisRaw("Mouse X") * Time.deltaTime * _rotationSensitivityX;
-        float mouseRotationY = Input.GetAxisRaw("Mouse Y") * Time.deltaTime * _rotationSetsitivityY;
+        float mouseRotationX = Input.GetAxisRaw("Mouse X") * Time.deltaTime * rotationSensitivityX;
+        float mouseRotationY = Input.GetAxisRaw("Mouse Y") * Time.deltaTime * rotationSetsitivityY;
         _rotationX -= mouseRotationY;
         _rotationY += mouseRotationX;
         _rotationX = Mathf.Clamp(_rotationX, -75f, 65f);
